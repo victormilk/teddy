@@ -27,11 +27,12 @@ Usuários podem planejar trabalho em fases e delegar para agentes em paralelo.
 - [x] Agent team orchestration with shared task lists — v0.3.0
 - [x] Session resumption and state continuity — v0.3.0
 - [x] Debug and review workflows — v0.3.0
+- [x] Plan amendment mid-execution — v0.5.0
+- [x] Rollback pós-UNIFY with safety tags — v0.5.0
 
 ### Active (In Progress)
 
-- [ ] Plan amendment mid-execution
-- [ ] Rollback pós-UNIFY with safety tags
+- [None — next milestone not started]
 
 ### Planned (Next)
 

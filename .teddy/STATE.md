@@ -5,18 +5,18 @@
 See: .teddy/PROJECT.md (updated 2026-03-25)
 
 **Core value:** Usuários podem planejar trabalho em fases e delegar para agentes em paralelo
-**Current focus:** v0.5 Housekeeping + Plan Resilience — Phase 05
+**Current focus:** v0.5 Housekeeping + Plan Resilience — Complete
 
 ## Current Position
 
 Milestone: v0.5 Housekeeping + Plan Resilience (v0.5.0)
-Phase: 1 of 2 — Housekeeping v0.5
-Plan: 05-01 — Housekeeping v0.5
-Status: Loop complete
-Last activity: 2026-03-25 — Phase 05 complete (direct execution, 9/9 tasks)
+Phase: 2 of 2 — Plan Resilience
+Plan: 06-01 — amend-plan + rollback commands
+Status: UNIFY complete
+Last activity: 2026-03-25 — Loop complete, all changes merged
 
 Progress:
-- Milestone: [█████░░░░░] 50%
+- Milestone: [██████████] 100%
 - Phase: [██████████] 100%
 
 ## Loop Position
@@ -37,7 +37,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Last Execution
 | Teammate | Tasks | Wave | Result | Files Modified |
 |----------|-------|------|--------|----------------|
-| Direct execution | 9/9 | 1 | PASS | PROJECT.md, ROADMAP.md, STATE.md, README.md, package.json |
+| command-dev | 6/6 | 1 | PASS | amend-plan.md, rollback.md |
+| loop-eng | 6/6 | 1 | PASS | unify.md, apply.md, loop-phases.md |
+| registry-dev | 6/6 | 1 | PASS | teddy.md, README.md, PROJECT.md, ROADMAP.md |
 
 ## Accumulated Context
 
@@ -62,9 +64,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ## Session Continuity
 
 Last session: 2026-03-25
-Stopped at: Phase 05 complete — housekeeping done
-Next action: /teddy:plan (Phase 06 — Plan Resilience)
-Resume file: .teddy/ROADMAP.md
+Stopped at: v0.5 milestone complete — all phases done
+Next action: /teddy:explore for next milestone or git push
+Resume file: .teddy/phases/06-plan-resilience/06-01-SUMMARY.md
 
 ---
 *STATE.md — Updated after every significant action*

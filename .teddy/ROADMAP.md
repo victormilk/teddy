@@ -7,8 +7,8 @@ Evolução do Teddy de um conjunto de skills individuais para um framework compl
 ## Current Milestone
 
 **v0.5 Housekeeping + Plan Resilience** (v0.5.0)
-Status: In Progress
-Phases: 1 of 2 complete
+Status: Complete
+Phases: 2 of 2 complete
 
 ## Milestones
 
@@ -17,7 +17,7 @@ Phases: 1 of 2 complete
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
 | 05 | Housekeeping v0.5 | 1 | Complete | 2026-03-25 |
-| 06 | Plan Resilience | TBD | Planned | — |
+| 06 | Plan Resilience | 1 | Complete | 2026-03-25 |
 
 ### v0.4 (Published)
 
@@ -52,7 +52,7 @@ No phases tracked — published directly.
 
 | Plan | Name | Status |
 |------|------|--------|
-| 06-01 | amend-plan + rollback commands | Planned |
+| 06-01 | amend-plan + rollback commands | Complete |
 
 ---
 

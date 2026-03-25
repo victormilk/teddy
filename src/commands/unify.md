@@ -59,6 +59,20 @@ As a developer, I want teammate results automatically reconciled, worktrees merg
 **Wait for user approval on any flagged issues before merging.**
 </step>
 
+<step name="create_safety_tag">
+**Create a safety tag before merging (rollback point):**
+
+1. Determine plan ID from STATE.md (e.g., "05-01")
+2. Create git tag on current HEAD:
+   `git tag teddy/pre-unify/{plan-id}`
+3. Verify tag was created:
+   `git tag -l "teddy/pre-unify/{plan-id}"`
+4. Log in output: "Safety tag created: teddy/pre-unify/{plan-id}"
+
+This tag enables /teddy:rollback to revert if the merge produces unwanted results.
+Do NOT delete this tag during cleanup — it serves as a permanent rollback point.
+</step>
+
 <step name="merge_worktrees">
 **Merge teammate worktree changes into main branch:**
 
@@ -147,6 +161,8 @@ Include teammate-specific sections:
      ```
      Partial cleanup — manual intervention may be needed. See warnings above.
      ```
+
+Do NOT delete teddy/pre-unify/* tags — they are permanent rollback points managed by /teddy:rollback.
 </step>
 
 <step name="update_state">

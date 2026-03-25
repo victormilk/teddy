@@ -41,7 +41,9 @@ Type `/teddy` in Claude Code to get started, then use any command:
 | `/teddy:explore` | Explore ideas before planning |
 | `/teddy:plan` | Create executable plan with teammate assignments |
 | `/teddy:apply` | Distribute and execute plan via Agent Teams |
+| `/teddy:amend-plan` | Modify active plan mid-execution |
 | `/teddy:unify` | Reconcile teammate results and merge |
+| `/teddy:rollback` | Revert UNIFY to pre-merge state |
 | `/teddy:status` | View team progress and project health |
 | `/teddy:resume` | Resume work across sessions |
 | `/teddy:debug` | Structured debugging workflow |
@@ -85,6 +87,10 @@ A `PLAN.md` is not transformed into a prompt — it **is** the prompt. Each plan
 ### Session Continuity
 
 `STATE.md` tracks current position, active teams, accumulated decisions, and session notes. When you return after a break, `/teddy:resume` picks up exactly where you left off.
+
+### Plan Resilience
+
+Plans can be modified mid-execution with `/teddy:amend-plan` — pause teammates, update tasks, and resume. If a UNIFY merge goes wrong, `/teddy:rollback` reverts to the pre-merge state using safety tags created automatically during UNIFY.
 
 ### Codebase Mapping
 

@@ -11,12 +11,20 @@ Explain the semantics of Teddy's three loop phases: PLAN, APPLY, UNIFY. Every un
     │                                         │
     ▼                                         │
   PLAN ────────► APPLY ────────► UNIFY ───────┘
-    │              │               │
-    │              │               │
- Define work   TeamCreate       Reconcile
- Get approval  Populate tasks   Merge worktrees
- Assign waves  Spawn teammates  TeamDelete
-               Monitor/collect  Update state
+    │              │  ▲            │
+    │              │  │            │
+ Define work    TeamCreate    Tag + Merge
+ Get approval   Populate      Reconcile
+ Assign waves   Spawn         TeamDelete
+                Monitor       Update state
+                   │
+                ┌──┘
+                ▼
+           AMEND-PLAN        ROLLBACK
+           (mid-APPLY)      (post-UNIFY)
+           Pause team       Revert to tag
+           Modify tasks     Restore state
+           Resume team      Re-enter loop
 ```
 
 ## PLAN Phase
@@ -97,6 +105,67 @@ Task 1 ──► Task 2 ──► 3   TeamCreate
 - STATE.md updated with new position
 - Loop closed, ready for next PLAN
 
+## AMEND-PLAN (Mid-APPLY)
+
+**Purpose:** Modify an active plan during execution when reality diverges from the original plan.
+
+**When Triggered:**
+- User requests changes ("amend", "change the plan", "modify tasks")
+- A teammate reports a blocker that requires plan-level changes
+- User realizes scope needs adjustment mid-execution
+
+**Activities:**
+1. Pause active teammates (send pause signal)
+2. Present current state: completed tasks, in-progress tasks, pending tasks
+3. Apply user-requested changes to PLAN.md and task list
+4. Add amendment log entry to PLAN.md with timestamp and reason
+5. Update task list (TaskCreate for new tasks, TaskUpdate for modified/removed tasks)
+6. Resume teammates with updated task list
+7. Update STATE.md with amendment count
+
+**Constraints:**
+- Only pending tasks are modifiable
+- Completed tasks are immutable (already merged or in worktree)
+- In-progress tasks finish their current work first
+- Each amendment is logged for UNIFY reconciliation
+
+**Exit Condition:**
+- PLAN.md updated with amendments and amendment log
+- Task list reflects changes (new, modified, or removed tasks)
+- Teammates resumed with refreshed task list
+- APPLY continues monitoring with amended plan
+
+## ROLLBACK (Post-UNIFY)
+
+**Purpose:** Revert a completed UNIFY by restoring the pre-merge state using the safety tag.
+
+**When Triggered:**
+- UNIFY introduced bugs or regressions
+- Merge produced incorrect results
+- User wants to take a different approach
+
+**Prerequisites:**
+- Safety tag exists (`teddy/pre-unify/{plan-id}`)
+- No uncommitted changes in working directory
+
+**Activities:**
+1. List available safety tags: `git tag -l "teddy/pre-unify/*"`
+2. Show scope of what will be reverted (commits since tag)
+3. Create backup tag at current HEAD: `teddy/pre-rollback/{plan-id}`
+4. Reset to safety tag: `git reset --hard teddy/pre-unify/{plan-id}`
+5. STATE.md is auto-restored to pre-unify state (it was tagged too)
+
+**After Rollback Options:**
+- Re-run UNIFY with different merge strategy
+- Amend the plan and re-APPLY
+- Start fresh with a new PLAN
+
+**Safety:**
+- Backup tag created before reset (teddy/pre-rollback/{plan-id})
+- Explicit user confirmation required ("yes" to proceed)
+- Handle uncommitted changes (warn and abort if dirty)
+- Never auto-delete safety or backup tags
+
 ## Loop Invariants
 
 **Never Skip PLAN:** No plan = no acceptance criteria = no way to verify = no way to assign teammates.
@@ -132,6 +201,20 @@ Validation:
 - [ ] TeamDelete completed
 - [ ] STATE.md reflects new position
 
+### APPLY → AMEND-PLAN (side-loop)
+Trigger: User requests plan changes during APPLY
+Validation:
+- [ ] APPLY is in progress (not complete)
+- [ ] Active team exists
+- [ ] Changes target pending tasks only
+
+### UNIFY → ROLLBACK (revert)
+Trigger: User requests rollback after UNIFY completed
+Validation:
+- [ ] Pre-unify safety tag exists
+- [ ] No uncommitted changes
+- [ ] User explicitly confirmed with "yes"
+
 ## Anti-Patterns
 
 **Partial loops:** PLAN → APPLY → (skip UNIFY) — leaves dangling worktrees and stale team resources.
@@ -141,5 +224,7 @@ Validation:
 **Merging without review:** Blindly merging teammate output without checking quality.
 
 **Forgetting TeamDelete:** Stale team configs persist in `~/.claude/teams/` and can block future team creation.
+
+**Rollback without backup:** Always verify teddy/pre-rollback tag was created before proceeding.
 
 </loop_phases>

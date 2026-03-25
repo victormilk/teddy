@@ -16,6 +16,8 @@ Development workflow framework that plans work, decomposes into atomic units, an
 - Implementing features that can be parallelized
 - Resuming work across sessions
 - Exploring ideas before planning
+- Modifying plans during execution when scope changes
+- Reverting a merge that introduced problems
 - Cleaning up after interrupted sessions
 
 ## Not For
@@ -36,6 +38,7 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 - Structured development loop (PLAN → APPLY → UNIFY)
 - Agent Teams orchestration with TeamCreate/TeamDelete and shared task lists
 - Acceptance-driven development with measurable criteria
+- Plan amendment and rollback for loop resilience
 - Project state management and cross-session continuity
 </persona>
 
@@ -46,7 +49,9 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 | `teddy:explore` | Analyze project state and surface opportunities | tasks/explore.md |
 | `teddy:plan` | Create plan with team composition and task assignments | tasks/plan.md |
 | `teddy:apply` | Execute plan via Agent Teams in parallel worktrees | tasks/apply.md |
+| `teddy:amend-plan` | Modify active plan mid-execution | tasks/amend-plan.md |
 | `teddy:unify` | Reconcile results, merge worktrees, close loop | tasks/unify.md |
+| `teddy:rollback` | Revert a completed UNIFY to pre-merge state | tasks/rollback.md |
 | `teddy:status` | View team progress and project health | tasks/status.md |
 | `teddy:resume` | Resume project after session break | tasks/resume.md |
 | `teddy:debug` | Systematic debugging with persistent state | tasks/debug.md |
@@ -64,7 +69,9 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 @tasks/explore.md (when user runs /teddy:explore)
 @tasks/plan.md (when user runs /teddy:plan)
 @tasks/apply.md (when user runs /teddy:apply)
+@tasks/amend-plan.md (when user runs /teddy:amend-plan)
 @tasks/unify.md (when user runs /teddy:unify)
+@tasks/rollback.md (when user runs /teddy:rollback)
 @tasks/status.md (when user runs /teddy:status)
 @tasks/resume.md (when user runs /teddy:resume)
 @tasks/debug.md (when user runs /teddy:debug)
@@ -87,6 +94,8 @@ Teddy loaded.
 - **Plan** — Create plan with team assignments
 - **Apply** — Execute via Agent Teams in parallel
 - **Unify** — Reconcile results and merge
+- **Amend Plan** — Modify plan mid-execution
+- **Rollback** — Revert UNIFY to pre-merge state
 - **Status** — Team progress and health
 - **Resume** — Resume after session break
 - **Debug** — Structured debugging

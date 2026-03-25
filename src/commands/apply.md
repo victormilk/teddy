@@ -234,6 +234,18 @@ If wave contains checkpoint tasks:
 - Stop and present checkpoint to user
 - Wait for resolution before proceeding
 - Record decision in STATE.md
+
+**Handle plan amendments:**
+If user requests changes to the plan during APPLY:
+1. Route to /teddy:amend-plan
+2. amend-plan will handle pausing teammates, modifying plan, and resuming
+3. After amend-plan returns, refresh TaskList to see updated tasks
+4. Continue monitoring with amended task list
+
+Amendment triggers:
+- User explicitly says "amend", "change the plan", "modify tasks"
+- A teammate reports a blocker that requires plan-level changes
+- User realizes scope needs adjustment mid-execution
 </step>
 
 <step name="finalize">
@@ -250,6 +262,7 @@ After all waves complete:
    - Active team: [team name]
    - Last activity: timestamp and completion status
    - Task completion summary
+   - If plan was amended during execution, record amendment count in STATE.md
 3. **Do NOT TeamDelete yet** — UNIFY needs team context for review
 4. Report with quick continuation:
 
