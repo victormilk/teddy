@@ -41,16 +41,16 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 <commands>
 | Command | Description | Routes To |
 |---------|-------------|-----------|
-| `teddy init` | Initialize project | tasks/init.md |
-| `teddy explore` | Explore ideas, generating input for planning | tasks/explore.md |
-| `teddy plan` | Create plan with teammate decomposition | tasks/plan.md |
-| `teddy apply` | Execute plan distributing to teammates | tasks/apply.md |
-| `teddy unify` | Reconcile teammate results | tasks/unify.md |
-| `teddy status` | View teammate status and progress | tasks/status.md |
-| `teddy resume` | Resume project/session | tasks/resume.md |
-| `teddy debug` | Debugging and problem resolution | tasks/debug.md |
-| `teddy review` | Structured code review | tasks/review.md |
-| `teddy map-codebase` | Map and document codebase | tasks/map-codebase.md |
+| `teddy:init` | Initialize project with .teddy/ directory and project files | tasks/init.md |
+| `teddy:explore` | Analyze project state and surface opportunities | tasks/explore.md |
+| `teddy:plan` | Create plan with team composition and task assignments | tasks/plan.md |
+| `teddy:apply` | Execute plan via Agent Teams in parallel worktrees | tasks/apply.md |
+| `teddy:unify` | Reconcile results, merge worktrees, close loop | tasks/unify.md |
+| `teddy:status` | View team progress and project health | tasks/status.md |
+| `teddy:resume` | Resume project after session break | tasks/resume.md |
+| `teddy:debug` | Systematic debugging with persistent state | tasks/debug.md |
+| `teddy:review` | Structured code review | tasks/review.md |
+| `teddy:map-codebase` | Map and document entire codebase | tasks/map-codebase.md |
 </commands>
 
 <routing>
@@ -58,16 +58,16 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 @context/session.md
 
 ## Load on Command
-@tasks/init.md (when user runs /teddy init)
-@tasks/explore.md (when user runs /teddy explore)
-@tasks/plan.md (when user runs /teddy plan)
-@tasks/apply.md (when user runs /teddy apply)
-@tasks/unify.md (when user runs /teddy unify)
-@tasks/status.md (when user runs /teddy status)
-@tasks/resume.md (when user runs /teddy resume)
-@tasks/debug.md (when user runs /teddy debug)
-@tasks/review.md (when user runs /teddy review)
-@tasks/map-codebase.md (when user runs /teddy map-codebase)
+@tasks/init.md (when user runs /teddy:init)
+@tasks/explore.md (when user runs /teddy:explore)
+@tasks/plan.md (when user runs /teddy:plan)
+@tasks/apply.md (when user runs /teddy:apply)
+@tasks/unify.md (when user runs /teddy:unify)
+@tasks/status.md (when user runs /teddy:status)
+@tasks/resume.md (when user runs /teddy:resume)
+@tasks/debug.md (when user runs /teddy:debug)
+@tasks/review.md (when user runs /teddy:review)
+@tasks/map-codebase.md (when user runs /teddy:map-codebase)
 
 ## Load on Demand
 @frameworks/teammate-orchestration.md (when delegating work to teammates)
@@ -79,16 +79,16 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 <greeting>
 Teddy loaded.
 
-- **Init** — Initialize project
-- **Explore** — Explore ideas before planning
-- **Plan** — Create plan with teammate decomposition
-- **Apply** — Distribute and execute via teammates
-- **Unify** — Reconcile results
-- **Status** — Teammate progress
-- **Resume** — Resume session
+- **Init** — Initialize project with .teddy/ structure
+- **Explore** — Analyze state and surface opportunities
+- **Plan** — Create plan with team assignments
+- **Apply** — Execute via Agent Teams in parallel
+- **Unify** — Reconcile results and merge
+- **Status** — Team progress and health
+- **Resume** — Resume after session break
 - **Debug** — Structured debugging
 - **Review** — Code review
-- **Map Codebase** — Document codebase
+- **Map Codebase** — Document entire codebase
 
 What are you working on?
 </greeting>

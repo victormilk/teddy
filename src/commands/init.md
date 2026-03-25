@@ -1,3 +1,7 @@
+---
+description: "Initialize Teddy structure in a new project with .teddy/ directory and project files"
+---
+
 <purpose>
 Initialize Teddy structure in a new project. Creates .teddy/ directory with PROJECT.md, ROADMAP.md, STATE.md, and phases/ directory. Gathers project context conversationally before routing to planning.
 </purpose>
@@ -10,7 +14,7 @@ As a developer, I want to initialize a structured project workspace with Teddy, 
 - Starting Teddy in a project that doesn't have .teddy/ directory
 - User explicitly requests project initialization
 - Beginning a new project from scratch
-- Entry point routes here via /teddy init
+- Entry point routes here via /teddy:init
 </when-to-use>
 
 <context>
@@ -33,7 +37,7 @@ As a developer, I want to initialize a structured project workspace with Teddy, 
    ```
 2. If exists:
    - "Teddy already initialized in this project."
-   - Route to `/teddy resume`
+   - Route to `/teddy:resume`
    - Exit this workflow
 3. If not exists: proceed with initialization
 </step>
@@ -107,7 +111,7 @@ Set initial state:
 - Milestone: v0.1 Initial Release
 - Phase: Not yet defined
 - Loop Position: all pending
-- Session Continuity: Next action = /teddy plan
+- Session Continuity: Next action = /teddy:plan
 </step>
 
 <step name="confirm_and_route">
@@ -128,7 +132,7 @@ Created:
   .teddy/phases/       ✓
 
 ────────────────────────────────────────
-▶ NEXT: /teddy plan
+▶ NEXT: /teddy:plan
   Define your phases and create your first plan.
 ────────────────────────────────────────
 
@@ -146,7 +150,7 @@ Do NOT suggest multiple next steps. ONE action only.
 - `.teddy/ROADMAP.md` (skeleton for planning)
 - `.teddy/STATE.md` (initialized state)
 - `.teddy/phases/` (empty directory)
-- Clear routing to `/teddy plan`
+- Clear routing to `/teddy:plan`
 </output>
 
 <acceptance-criteria>
@@ -154,6 +158,6 @@ Do NOT suggest multiple next steps. ONE action only.
 - [ ] PROJECT.md populated with project name, description, core value
 - [ ] ROADMAP.md created with skeleton structure
 - [ ] STATE.md created with initial loop position (all pending)
-- [ ] User informed of next action: /teddy plan
+- [ ] User informed of next action: /teddy:plan
 - [ ] No existing .teddy/ was overwritten without user consent
 </acceptance-criteria>

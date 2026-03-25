@@ -1,3 +1,7 @@
+---
+description: "Resume work after session break with context restoration and single next action"
+---
+
 <purpose>
 Resume Teddy work after a session break. Reads STATE.md to restore context, determines current loop position, and routes to exactly ONE next action.
 </purpose>
@@ -10,7 +14,7 @@ As a developer, I want to instantly resume work from where I left off, so that s
 - Starting a new session on an existing Teddy project
 - Context was cleared (new conversation)
 - User asks to "continue" or "resume" work
-- Entry point routes here via /teddy resume
+- Entry point routes here via /teddy:resume
 </when-to-use>
 
 <context>
@@ -30,7 +34,7 @@ As a developer, I want to instantly resume work from where I left off, so that s
    ls .teddy/STATE.md 2>/dev/null
    ```
 2. If not found:
-   - "No Teddy project found. Run /teddy init first."
+   - "No Teddy project found. Run /teddy:init first."
    - Exit workflow
 3. If found: proceed with resume
 </step>
@@ -51,10 +55,10 @@ Based on loop position, determine **exactly ONE** next action:
 
 | Loop State | Single Next Action |
 |------------|-------------------|
-| PLAN ○ (no plan yet) | `/teddy plan` |
-| PLAN ✓, APPLY ○ (plan awaiting approval) | `/teddy apply [plan-path]` |
-| PLAN ✓, APPLY ✓, UNIFY ○ (executed, team active) | `/teddy unify [plan-path]` |
-| All ✓ (loop complete) | `/teddy plan` (next phase) |
+| PLAN ○ (no plan yet) | `/teddy:plan` |
+| PLAN ✓, APPLY ○ (plan awaiting approval) | `/teddy:apply [plan-path]` |
+| PLAN ✓, APPLY ✓, UNIFY ○ (executed, team active) | `/teddy:unify [plan-path]` |
+| All ✓ (loop complete) | `/teddy:plan` (next phase) |
 | Blocked | "Address blocker: [specific issue]" |
 
 **Do NOT offer multiple options.** Pick the ONE correct action.

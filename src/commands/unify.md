@@ -1,3 +1,7 @@
+---
+description: "Reconcile plan vs. results, merge worktrees, clean up teams, and close the loop"
+---
+
 <purpose>
 Reconcile what was planned vs. what teammates built. Review worktree changes, merge results, create SUMMARY.md, update STATE.md, clean up the Agent Team, and close the loop to prepare for next PLAN.
 </purpose>
@@ -10,7 +14,7 @@ As a developer, I want teammate results automatically reconciled, worktrees merg
 - APPLY phase complete (all teammates finished)
 - Ready to close the current loop
 - Need to merge worktree changes and record results
-- Entry point routes here via /teddy unify
+- Entry point routes here via /teddy:unify
 </when-to-use>
 
 <context>

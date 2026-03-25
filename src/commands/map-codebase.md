@@ -1,3 +1,7 @@
+---
+description: "Orchestrate parallel Explore agents to analyze and document the entire codebase"
+---
+
 <purpose>
 Orchestrate parallel Explore teammates to analyze codebase and produce structured documents in .teddy/codebase/. Each teammate has fresh context and focuses on specific aspects.
 </purpose>
@@ -10,7 +14,7 @@ As a developer, I want my codebase automatically analyzed and documented, so tha
 - Starting work on an existing codebase
 - Before first planning session
 - After major refactoring
-- Entry point routes here via /teddy map-codebase
+- Entry point routes here via /teddy:map-codebase
 </when-to-use>
 
 <context>
@@ -179,7 +183,7 @@ Created .teddy/codebase/:
 - CONCERNS.md — Technical debt and issues
 
 ────────────────────────────────────────
-▶ NEXT: /teddy init or /teddy plan
+▶ NEXT: /teddy:init or /teddy:plan
 ────────────────────────────────────────
 ```
 </step>

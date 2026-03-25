@@ -1,3 +1,7 @@
+---
+description: "Display project status, active team progress, and recommended next action"
+---
+
 <purpose>
 Display current project status including active Agent Team, task list progress, teammate status, overall loop position, and project health metrics.
 </purpose>
@@ -10,7 +14,7 @@ As a developer, I want to see at a glance what the team is doing and overall pro
 - Checking on team progress during APPLY phase
 - Reviewing overall project status at any time
 - Before deciding next action
-- Entry point routes here via /teddy status
+- Entry point routes here via /teddy:status
 </when-to-use>
 
 <context>

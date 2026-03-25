@@ -1,3 +1,7 @@
+---
+description: "Structured code review of changes, branches, or teammate output"
+---
+
 <purpose>
 Structured code review of recent changes, a specific branch, or teammate output. Checks code quality, adherence to conventions, test coverage, and potential issues.
 </purpose>
@@ -10,7 +14,7 @@ As a developer, I want structured code reviews that check quality and convention
 - After teammates complete work (before UNIFY merge)
 - Reviewing a specific branch or PR
 - Checking code quality after a series of changes
-- Entry point routes here via /teddy review
+- Entry point routes here via /teddy:review
 </when-to-use>
 
 <context>

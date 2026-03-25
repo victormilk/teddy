@@ -1,5 +1,9 @@
+---
+description: "Analyze project state and codebase to surface opportunities and converge on a direction"
+---
+
 <purpose>
-Proactive exploration that reads the project's .teddy/ state, analyzes the real codebase, ideates opportunities (features, fixes, improvements, tech debt), and discusses with the user to converge into a direction for /teddy plan.
+Proactive exploration that reads the project's .teddy/ state, analyzes the real codebase, ideates opportunities (features, fixes, improvements, tech debt), and discusses with the user to converge into a direction for /teddy:plan.
 </purpose>
 
 <user-story>
@@ -11,7 +15,7 @@ As a developer, I want Teddy to proactively analyze my project state and codebas
 - After completing a phase and looking for the next priority
 - When the project feels stale and needs fresh direction
 - Before planning — to ensure the plan is grounded in real state
-- Entry point routes here via /teddy explore
+- Entry point routes here via /teddy:explore
 </when-to-use>
 
 <context>
@@ -36,9 +40,9 @@ Check for `.teddy/` directory in the project root.
 No .teddy/ folder found in this project.
 Explore needs project state to work proactively.
 
-▶ Redirecting to /teddy init
+▶ Redirecting to /teddy:init
 ```
-**Stop here and invoke /teddy init. Do not proceed.**
+**Stop here and invoke /teddy:init. Do not proceed.**
 
 **If `.teddy/` exists:**
 Read these files in parallel:
@@ -110,7 +114,7 @@ Present this to the user and ask:
 What catches your attention?
 - Pick one or more items to explore further
 - Suggest something not listed
-- Or approve a recommendation to proceed to /teddy plan
+- Or approve a recommendation to proceed to /teddy:plan
 ```
 
 **Wait for response.**
@@ -184,14 +188,14 @@ Direction: [one-liner]
 Output: .teddy/explorations/EXPLORATION-{date}-{topic-slug}.md
 
 ────────────────────────────────────────
-▶ SUGGESTED NEXT: /teddy plan
+▶ SUGGESTED NEXT: /teddy:plan
   Create plan informed by exploration findings.
 ────────────────────────────────────────
 
-Want to proceed to /teddy plan? (yes / no / explore more)
+Want to proceed to /teddy:plan? (yes / no / explore more)
 ```
 
-**IMPORTANT: Do NOT invoke /teddy plan automatically. Wait for explicit user authorization before routing.**
+**IMPORTANT: Do NOT invoke /teddy:plan automatically. Wait for explicit user authorization before routing.**
 **If user says no, the exploration is complete — do not push further.**
 </step>
 
@@ -206,7 +210,7 @@ EXPLORATION.md following templates/EXPLORATION.md format, enriched with state an
 </output>
 
 <acceptance-criteria>
-- [ ] .teddy/ state validated — redirects to /teddy init if missing
+- [ ] .teddy/ state validated — redirects to /teddy:init if missing
 - [ ] PROJECT.md, ROADMAP.md, STATE.md read and analyzed
 - [ ] Real codebase analyzed (TODOs, test gaps, roadmap vs reality)
 - [ ] Opportunities categorized with priority and effort
@@ -214,6 +218,6 @@ EXPLORATION.md following templates/EXPLORATION.md format, enriched with state an
 - [ ] Interactive discussion completed (max 3 rounds)
 - [ ] Direction confirmed by user before writing output
 - [ ] EXPLORATION.md written with findings, discussion, and recommendation
-- [ ] Clear routing to /teddy plan after completion
+- [ ] Clear routing to /teddy:plan after completion
 </acceptance-criteria>
 </output>

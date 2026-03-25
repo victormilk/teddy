@@ -1,3 +1,7 @@
+---
+description: "Execute an approved PLAN.md by creating Agent Teams for parallel worktree execution"
+---
+
 <purpose>
 Execute an approved PLAN.md by creating an Agent Team, populating its shared task list, and spawning teammates to work in parallel. Manages team lifecycle: create, populate, spawn, monitor, collect results.
 </purpose>
@@ -10,7 +14,7 @@ As a developer, I want my approved plan automatically distributed to a coordinat
 - User has approved a PLAN.md (explicit approval required)
 - STATE.md shows loop position at PLAN complete, ready for APPLY
 - No unresolved blockers from planning phase
-- Entry point routes here via /teddy apply
+- Entry point routes here via /teddy:apply
 </when-to-use>
 
 <context>
@@ -251,7 +255,7 @@ Continue to UNIFY?
 [1] Yes, run UNIFY | [2] Pause here
 ```
 
-Accept quick inputs: "1", "yes" → run `/teddy unify [plan-path]`
+Accept quick inputs: "1", "yes" → run `/teddy:unify [plan-path]`
 </step>
 
 </steps>

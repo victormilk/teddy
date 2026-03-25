@@ -1,3 +1,7 @@
+---
+description: "Systematic debugging with persistent state and optional parallel investigation"
+---
+
 <purpose>
 Systematic debugging with persistent state that survives context resets. The debug file IS the debugging brain — create it immediately and update it continuously. Optionally spawns investigation teammates for parallel hypothesis testing.
 </purpose>
@@ -10,7 +14,7 @@ As a developer, I want structured debugging that persists across sessions and ca
 - User reports a bug or unexpected behavior
 - Tests failing without obvious cause
 - Need systematic investigation across multiple files/systems
-- Entry point routes here via /teddy debug
+- Entry point routes here via /teddy:debug
 </when-to-use>
 
 <context>

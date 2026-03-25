@@ -1,3 +1,7 @@
+---
+description: "Create executable PLAN.md with team composition and task assignments for a phase"
+---
+
 <purpose>
 Create an executable PLAN.md for the current or specified phase. The plan defines objective, acceptance criteria, tasks with teammate assignments, boundaries, and verification — everything needed for the APPLY phase to distribute work to agent teammates.
 </purpose>
@@ -11,7 +15,7 @@ As a developer, I want to create structured plans that decompose work into teamm
 - Previous plan completed (loop closed with UNIFY)
 - First plan in a project (after init)
 - After exploration informed the approach
-- Entry point routes here via /teddy plan
+- Entry point routes here via /teddy:plan
 </when-to-use>
 
 <context>
@@ -174,7 +178,7 @@ Continue to APPLY?
 [1] Approved, run APPLY | [2] Questions first | [3] Pause here
 ```
 
-Accept quick inputs: "1", "approved", "yes", "go" → run `/teddy apply [plan-path]`
+Accept quick inputs: "1", "approved", "yes", "go" → run `/teddy:apply [plan-path]`
 </step>
 
 </steps>
