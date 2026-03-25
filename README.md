@@ -50,6 +50,7 @@ Type `/teddy` in Claude Code to get started, then use any command:
 | `/teddy:review` | Code review |
 | `/teddy:cleanup` | Clean orphaned teams, tasks, and worktrees |
 | `/teddy:map-codebase` | Analyze and document existing codebase |
+| `/teddy:flows` | Manage skill dependencies with auto-discovery |
 
 ## Project Structure
 
@@ -92,6 +93,19 @@ A `PLAN.md` is not transformed into a prompt — it **is** the prompt. Each plan
 
 Plans can be modified mid-execution with `/teddy:amend-plan` — pause teammates, update tasks, and resume. If a UNIFY merge goes wrong, `/teddy:rollback` reverts to the pre-merge state using safety tags created automatically during UNIFY.
 
+### Skill Flows
+
+Teddy can auto-discover your custom Claude Code skills and suggest which ones are relevant to your project. Run `/teddy:flows` to:
+
+1. **Discover** — Scans `~/.claude/commands/` and reads skill metadata
+2. **Match** — Cross-references skills with your project stack and current phase
+3. **Confirm** — Presents suggestions with confidence levels for your approval
+
+Once configured, skills are:
+- **Detected** during `/teddy:plan` — suggests relevant skills for each plan
+- **Verified** during `/teddy:apply` — blocks execution if required skills aren't loaded
+- **Audited** during `/teddy:unify` — documents gaps for continuous improvement
+
 ### Codebase Mapping
 
 `/teddy:map-codebase` spawns 4 parallel Explore agents that analyze your codebase and produce 7 structured documents. These inform planning and onboarding with actual file paths, not vague descriptions.
@@ -105,9 +119,10 @@ src/
 │   ├── teammate-orchestration.md
 │   ├── loop-phases.md
 │   ├── plan-format.md
-│   └── quality-principles.md
+│   ├── quality-principles.md
+│   └── skill-flows.md
 ├── templates/          # Document templates
-│   ├── PROJECT.md, ROADMAP.md, STATE.md, PLAN.md, SUMMARY.md, EXPLORATION.md
+│   ├── PROJECT.md, ROADMAP.md, STATE.md, PLAN.md, SUMMARY.md, EXPLORATION.md, FLOWS.md
 │   └── codebase/       # 7 codebase analysis templates
 ├── context/            # Runtime session context
 └── checklists/         # Quality gates (plan-review, unify-gate)

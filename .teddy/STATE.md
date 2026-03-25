@@ -5,13 +5,13 @@
 See: .teddy/PROJECT.md (updated 2026-03-25)
 
 **Core value:** Usuários podem planejar trabalho em fases e delegar para agentes em paralelo
-**Current focus:** v0.5 Housekeeping + Plan Resilience — Complete
+**Current focus:** v0.6 Skill Flows — In Progress
 
 ## Current Position
 
-Milestone: v0.5 Housekeeping + Plan Resilience (v0.5.0)
-Phase: 2 of 2 — Plan Resilience
-Plan: 06-01 — amend-plan + rollback commands
+Milestone: v0.6 Skill Flows (v0.6.0)
+Phase: 1 of 1 — Skill Flows
+Plan: 07-01 — Skill Flows com Auto-Reconhecimento
 Status: UNIFY complete
 Last activity: 2026-03-25 — Loop complete, all changes merged
 
@@ -32,14 +32,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Active
 | Teammate | Task | Wave | Status | Started | Worktree |
 |----------|------|------|--------|---------|----------|
-| [None active] | | | | | |
+| [None active — team cleaned up] | | | | | |
 
 ### Last Execution
 | Teammate | Tasks | Wave | Result | Files Modified |
 |----------|-------|------|--------|----------------|
-| command-dev | 6/6 | 1 | PASS | amend-plan.md, rollback.md |
-| loop-eng | 6/6 | 1 | PASS | unify.md, apply.md, loop-phases.md |
-| registry-dev | 6/6 | 1 | PASS | teddy.md, README.md, PROJECT.md, ROADMAP.md |
+| flows-dev | 6/6 | 1 | PASS | flows.md, skill-flows.md, FLOWS.md template |
+| integration-dev | 5/5 | 1 | PASS | plan.md, apply.md, unify.md, plan-format.md, loop-phases.md |
+| registry-dev | 5/5 | 1 | PASS | teddy.md, README.md, package.json, PROJECT.md, ROADMAP.md |
 
 ## Accumulated Context
 
@@ -64,9 +64,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ## Session Continuity
 
 Last session: 2026-03-25
-Stopped at: v0.5 milestone complete — all phases done
-Next action: /teddy:explore for next milestone or git push
-Resume file: .teddy/phases/06-plan-resilience/06-01-SUMMARY.md
+Stopped at: Plan 07-01 created, awaiting approval for APPLY
+Next action: git commit + git push, or /teddy:explore for next milestone
+Resume file: .teddy/phases/07-skill-flows/07-01-SUMMARY.md
 
 ---
 *STATE.md — Updated after every significant action*

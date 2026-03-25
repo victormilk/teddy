@@ -50,6 +50,7 @@ team:
 | `autonomous` | Yes | `true` if no checkpoints, `false` if has checkpoints |
 | `team` | Yes | Team composition: name, size, roles with domains and file ownership |
 | `team.roles` | Yes | Array of role definitions — each with name, domain description, and owned paths |
+| `skills` | No | Optional section for skill dependencies (populated by detect_required_skills) |
 
 ## Task Anatomy
 
@@ -173,6 +174,36 @@ AVOID:  Plan 01 = All models → 1 agent (sequential, no parallelism)
 - No cross-ownership modifications without SendMessage coordination
 </boundaries>
 ```
+
+## Skills Section (Optional)
+
+Plans may include a `<skills>` section when the project has skill dependencies configured via `/teddy:flows`. This section is populated by the `detect_required_skills` step during `/teddy:plan`.
+
+The `<skills>` section sits after `<tasks>` and before `<boundaries>` in PLAN.md:
+
+```xml
+<skills>
+| Skill | Priority | Reason |
+|-------|----------|--------|
+| /lint | required | Tasks touch src/ — code quality enforcement |
+| /test-e2e | optional | Tasks touch src/api/ — end-to-end coverage |
+</skills>
+```
+
+**Priority levels:**
+- **required** — APPLY's `verify_required_skills` step blocks execution if the skill is not available. UNIFY's `audit_skill_usage` step documents a gap if the skill was not invoked during execution.
+- **optional** — Informational only. Neither APPLY nor UNIFY enforces availability or usage. Serves as a recommendation for the team.
+
+**Behavior by phase:**
+- **PLAN** — `detect_required_skills` analyzes tasks against FLOWS.md triggers and suggests skills. User confirms, adjusts, or skips.
+- **APPLY** — `verify_required_skills` checks that all required skills are loaded before spawning teammates. This is the only hard gate in the skill flows system.
+- **UNIFY** — `audit_skill_usage` cross-references declared skills with execution results. Advisory only — warns about gaps but never blocks.
+
+**When absent:** If no `<skills>` section is present, all three phases skip their skill-related steps silently. No verification, no audit, no warnings.
+
+| Field | Required | Purpose |
+|-------|----------|---------|
+| `skills` | No | Optional section for skill dependencies |
 
 ## Anti-Patterns
 

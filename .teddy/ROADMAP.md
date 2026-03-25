@@ -6,11 +6,17 @@ Evolução do Teddy de um conjunto de skills individuais para um framework compl
 
 ## Current Milestone
 
-**v0.5 Housekeeping + Plan Resilience** (v0.5.0)
+**v0.6 Skill Flows** (v0.6.0)
 Status: Complete
-Phases: 2 of 2 complete
+Phases: 1 of 1 complete
 
 ## Milestones
+
+### v0.6 Skill Flows
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 07 | Skill Flows | 1 | Complete | 2026-03-25 |
 
 ### v0.5 Housekeeping + Plan Resilience
 
@@ -53,6 +59,16 @@ No phases tracked — published directly.
 | Plan | Name | Status |
 |------|------|--------|
 | 06-01 | amend-plan + rollback commands | Complete |
+
+### Phase 07: Skill Flows
+
+**Objetivo:** Implementar /teddy:flows com auto-discovery de skills, matching semântico, confirmation flow, e integração no loop (detect no PLAN, gate no APPLY, audit no UNIFY).
+
+**Origem:** EXPLORATION-2026-03-25-flows-auto-recognition.md
+
+| Plan | Name | Status |
+|------|------|--------|
+| 07-01 | Skill Flows com Auto-Reconhecimento | Complete |
 
 ---
 

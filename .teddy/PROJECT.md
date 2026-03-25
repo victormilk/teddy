@@ -12,7 +12,7 @@ Usuários podem planejar trabalho em fases e delegar para agentes em paralelo.
 
 | Attribute | Value |
 |-----------|-------|
-| Version | 0.5.0 |
+| Version | 0.6.0 |
 | Status | Prototype |
 | Last Updated | 2026-03-25 |
 
@@ -29,6 +29,7 @@ Usuários podem planejar trabalho em fases e delegar para agentes em paralelo.
 - [x] Debug and review workflows — v0.3.0
 - [x] Plan amendment mid-execution — v0.5.0
 - [x] Rollback pós-UNIFY with safety tags — v0.5.0
+- [x] Skill dependency management with auto-discovery and confirmation — v0.6.0
 
 ### Active (In Progress)
 

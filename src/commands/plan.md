@@ -79,6 +79,35 @@ As a developer, I want to create structured plans that decompose work into teamm
 7. Set autonomous flag: true if no checkpoints, false otherwise
 </step>
 
+<step name="detect_required_skills" priority="optional">
+1. Check if `.teddy/FLOWS.md` exists:
+   - If **not found**: skip this step silently — no output, no warning
+   - If **found**: continue to step 2
+2. Read `.teddy/FLOWS.md` — extract declared skills and their trigger patterns:
+   - Skill name, priority (required / optional), trigger file paths and domains
+3. Analyze the plan's tasks against FLOWS.md mappings:
+   - For each task's file paths and domain, match against skill trigger patterns
+   - Collect all matching skills with match reasons
+4. If matches found, present skill suggestions:
+   ```
+   ════════════════════════════════════════
+   SKILL DEPENDENCIES DETECTED
+   ════════════════════════════════════════
+
+   | Skill | Priority | Match Reason |
+   |-------|----------|--------------|
+   | /skill-a | required | Tasks touch src/api/ (API domain) |
+   | /skill-b | optional | Tasks touch tests/ (testing domain) |
+
+   Include these skills in the plan? (yes / adjust / skip)
+   ```
+5. Handle user response:
+   - **yes**: all suggested skills will be included in `<skills>` section
+   - **adjust**: user modifies the list (add/remove/change priority)
+   - **skip**: no `<skills>` section added, proceed without skills
+6. If confirmed, pass skill list to `create_plan` step for inclusion in PLAN.md
+</step>
+
 <step name="create_plan">
 1. Create phase directory: `.teddy/phases/{NN}-{phase-name}/`
 2. Generate PLAN.md following @templates/PLAN.md structure:
@@ -125,8 +154,17 @@ As a developer, I want to create structured plans that decompose work into teamm
    - Same wave = parallel roles in isolated worktrees
    - Different waves = sequential execution
 
-3. Ensure every task has: files + action + verify + done + role assignment
-4. Verify 5-6 tasks per role, 3-5 roles total
+3. If `detect_required_skills` produced a skill list, add `<skills>` section after `<tasks>` and before `<boundaries>`:
+   ```xml
+   <skills>
+   | Skill | Priority | Reason |
+   |-------|----------|--------|
+   | /skill-a | required | Tasks touch src/api/ (API domain) |
+   | /skill-b | optional | Tasks touch tests/ (testing domain) |
+   </skills>
+   ```
+4. Ensure every task has: files + action + verify + done + role assignment
+5. Verify 5-6 tasks per role, 3-5 roles total
 </step>
 
 <step name="validate_plan">

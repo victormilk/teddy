@@ -66,6 +66,41 @@ As a developer, I want my approved plan automatically distributed to a coordinat
    - Wait for explicit approval before proceeding
 </step>
 
+<step name="verify_required_skills" priority="blocking">
+1. Read PLAN.md and check for `<skills>` section
+2. If **no `<skills>` section**: proceed silently — no output, no delay
+3. If `<skills>` section exists:
+   a. Parse each skill entry: name, priority (required / optional)
+   b. For each **required** skill: check if the skill is available and loaded
+   c. For each **optional** skill: note status but do not block
+4. If **all required skills loaded**:
+   ```
+   ✓ Required skills verified: /skill-a, /skill-b
+   ```
+   Proceed to load_plan.
+5. If **any required skill is NOT loaded**:
+   ```
+   ════════════════════════════════════════
+   ⛔ MISSING REQUIRED SKILLS
+   ════════════════════════════════════════
+
+   | Skill | Priority | Status |
+   |-------|----------|--------|
+   | /skill-a | required | ✓ loaded |
+   | /skill-c | required | ✗ NOT loaded |
+   | /skill-b | optional | — skipped |
+
+   Required skills must be available before execution.
+
+   [ready]    Re-check skill availability
+   [override] Proceed without skills (logged as deviation in STATE.md)
+   ════════════════════════════════════════
+   ```
+6. Handle user response:
+   - **ready**: re-run skill availability check (loop back to step 3)
+   - **override**: log override to STATE.md as a deviation, proceed to load_plan
+</step>
+
 <step name="load_plan">
 1. Read the PLAN.md file
 2. Parse frontmatter including team composition:

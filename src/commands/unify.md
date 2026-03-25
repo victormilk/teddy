@@ -116,6 +116,35 @@ Do NOT delete this tag during cleanup — it serves as a permanent rollback poin
    - Impact on outcomes
 </step>
 
+<step name="audit_skill_usage" priority="advisory">
+1. Check if `.teddy/FLOWS.md` exists AND PLAN.md has `<skills>` section:
+   - If **neither exists**: skip this step silently — no output
+   - If **either exists**: continue to step 2
+2. For each skill declared in PLAN.md `<skills>` section:
+   - Check execution logs and task results to determine if the skill was invoked during APPLY
+   - Mark each skill as: **invoked** or **not invoked**
+3. For **required** skills that were NOT invoked:
+   - Document the gap in SUMMARY.md under Deviations section
+   - Note: this is informational — does NOT block UNIFY
+4. Present audit summary:
+   ```
+   ════════════════════════════════════════
+   SKILL AUDIT
+   ════════════════════════════════════════
+
+   | Skill | Priority | Invoked? | Gap? |
+   |-------|----------|----------|------|
+   | /skill-a | required | ✓ Yes | — |
+   | /skill-c | required | ✗ No | ⚠ Gap documented |
+   | /skill-b | optional | ✗ No | — (optional) |
+
+   [N] skill gaps documented in SUMMARY.md Deviations.
+   ════════════════════════════════════════
+   ```
+5. **IMPORTANT: This step is advisory only — it NEVER blocks UNIFY.**
+   Even if all required skills were missed, UNIFY continues to create_summary.
+</step>
+
 <step name="create_summary">
 Create SUMMARY.md at `.teddy/phases/{phase}/{plan}-SUMMARY.md` using @templates/SUMMARY.md:
 
@@ -125,6 +154,7 @@ Include teammate-specific sections:
 - Per-teammate files modified
 - Merge status and any conflict resolutions
 - Overall acceptance criteria results
+- Include skill audit results if `audit_skill_usage` step produced findings
 </step>
 
 <step name="cleanup_team">

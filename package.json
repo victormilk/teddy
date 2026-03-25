@@ -1,6 +1,6 @@
 {
   "name": "teddy-framework",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Development workflow framework that plans work, decomposes into atomic units, and orchestrates named Agent Teams with shared task lists for coordinated parallel execution.",
   "bin": {
     "teddy-framework": "bin/install.js"

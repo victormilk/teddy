@@ -41,7 +41,8 @@ Explain the semantics of Teddy's three loop phases: PLAN, APPLY, UNIFY. Every un
 4. Break down into tasks with Files, Action, Verify, Done
 5. **Assign teammates and waves** (Teddy-specific)
 6. Set boundaries (DO NOT CHANGE, SCOPE LIMITS)
-7. **Wait for approval before proceeding**
+7. **Detect skill dependencies** — if FLOWS.md exists, analyze tasks and suggest required skills (optional step)
+8. **Wait for approval before proceeding**
 
 **Exit Condition:**
 - PLAN.md created with all required sections including teammate assignments
@@ -65,6 +66,7 @@ Task 1 ──► Task 2 ──► 3   TeamCreate
 
 **Activities:**
 1. **TeamCreate** — create named team (e.g., "teddy-01-01")
+1b. **Verify required skills** — if PLAN has `<skills>` section, check required skills are loaded (blocking gate)
 2. **TaskCreate** — populate shared task list with plan tasks
 3. **Spawn teammates** — Agent with team_name + isolation: "worktree"
 4. Teammates claim tasks from shared list, execute, mark complete
@@ -92,6 +94,7 @@ Task 1 ──► Task 2 ──► 3   TeamCreate
 4. **Merge worktrees into main branch** (resolve conflicts if any)
 5. Document acceptance criteria results (PASS/FAIL)
 6. Note deviations and why
+6b. **Audit skill usage** — if FLOWS.md exists, cross-reference skill declarations with execution (warn, don't block)
 7. Create SUMMARY.md with team execution details
 8. **Shut down teammates** (SendMessage shutdown_request)
 9. **TeamDelete** — clean up team and task resources
@@ -185,6 +188,7 @@ Validation:
 - [ ] Teammate assignments present
 - [ ] No file conflicts between same-wave tasks
 - [ ] Acceptance criteria are testable
+- [ ] Skills section present if FLOWS.md configured (optional)
 
 ### APPLY → UNIFY
 Trigger: All tasks completed in shared task list OR blockers documented
@@ -192,6 +196,7 @@ Validation:
 - [ ] Each task verification passed (or blocker recorded in TaskList)
 - [ ] No skipped tasks
 - [ ] Deviations noted
+- [ ] Skill overrides logged if verify_required_skills was bypassed
 
 ### UNIFY → PLAN (next)
 Trigger: All worktrees merged, team cleaned up, SUMMARY.md created, STATE.md updated

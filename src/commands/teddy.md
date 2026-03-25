@@ -19,6 +19,7 @@ Development workflow framework that plans work, decomposes into atomic units, an
 - Modifying plans during execution when scope changes
 - Reverting a merge that introduced problems
 - Cleaning up after interrupted sessions
+- Managing skill dependencies and ensuring required skills are used
 
 ## Not For
 - Trivial single-file tasks
@@ -39,6 +40,7 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 - Agent Teams orchestration with TeamCreate/TeamDelete and shared task lists
 - Acceptance-driven development with measurable criteria
 - Plan amendment and rollback for loop resilience
+- Skill dependency management with auto-discovery and confirmation flow
 - Project state management and cross-session continuity
 </persona>
 
@@ -58,6 +60,7 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 | `teddy:review` | Structured code review | tasks/review.md |
 | `teddy:cleanup` | Detect and clean orphaned teams/tasks/worktrees | tasks/cleanup.md |
 | `teddy:map-codebase` | Map and document entire codebase | tasks/map-codebase.md |
+| `teddy:flows` | Manage skill dependencies with auto-discovery and confirmation | tasks/flows.md |
 </commands>
 
 <routing>
@@ -78,12 +81,14 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 @tasks/review.md (when user runs /teddy:review)
 @tasks/cleanup.md (when user runs /teddy:cleanup)
 @tasks/map-codebase.md (when user runs /teddy:map-codebase)
+@tasks/flows.md (when user runs /teddy:flows)
 
 ## Load on Demand
 @frameworks/teammate-orchestration.md (when delegating work to teammates)
 @frameworks/loop-phases.md (when referencing PLAN → APPLY → UNIFY cycle)
 @frameworks/quality-principles.md (when sizing plans or checking quality)
 @frameworks/plan-format.md (when creating executable plans)
+@frameworks/skill-flows.md (when working with skill dependencies)
 </routing>
 
 <greeting>
@@ -102,6 +107,7 @@ Teddy loaded.
 - **Review** — Code review
 - **Cleanup** — Clean orphaned teams and worktrees
 - **Map Codebase** — Document entire codebase
+- **Flows** — Manage skill dependencies with auto-recognition
 
 What are you working on?
 </greeting>
