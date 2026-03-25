@@ -29,7 +29,7 @@ Contains:
 
 Every PLAN must complete the full loop:
 
-```
+```text
 PLAN ──▶ APPLY ──▶ UNIFY
 ```
 

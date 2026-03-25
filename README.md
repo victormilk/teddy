@@ -6,7 +6,7 @@ Development workflow framework for [Claude Code](https://docs.anthropic.com/en/d
 
 Every unit of work follows a three-phase loop:
 
-```
+```text
 PLAN ──▶ APPLY ──▶ UNIFY
 ```
 
@@ -56,7 +56,7 @@ Type `/teddy` in Claude Code to get started, then use any command:
 
 When you run `/teddy:init`, a `.teddy/` directory is created in your project:
 
-```
+```text
 .teddy/
 ├── PROJECT.md              # What we're building and why
 ├── ROADMAP.md              # Milestones and phases
@@ -112,7 +112,7 @@ Once configured, skills are:
 
 ## Framework Files
 
-```
+```text
 src/
 ├── commands/           # Slash command definitions
 ├── frameworks/         # Core methodology
@@ -127,6 +127,10 @@ src/
 ├── context/            # Runtime session context
 └── checklists/         # Quality gates (plan-review, unify-gate)
 ```
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a detailed list of changes in each version.
 
 ## License
 

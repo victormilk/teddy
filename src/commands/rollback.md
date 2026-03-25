@@ -31,7 +31,7 @@ As a developer, I want to undo a bad merge from UNIFY, so that I can return to t
 
 <step name="find_safety_tag" priority="first">
 1. List git tags matching `teddy/pre-unify/*`:
-   ```
+   ```bash
    git tag -l "teddy/pre-unify/*" --sort=-creatordate
    ```
 2. If no tags found: exit with message:
@@ -56,15 +56,15 @@ As a developer, I want to undo a bad merge from UNIFY, so that I can return to t
 
 <step name="show_revert_scope">
 1. Show what will be reverted:
-   ```
+   ```bash
    git diff [selected-tag]..HEAD --stat
    ```
 2. Show commits that will be undone:
-   ```
+   ```bash
    git log [selected-tag]..HEAD --oneline
    ```
 3. Check for uncommitted changes:
-   ```
+   ```bash
    git status --porcelain
    ```
 4. If uncommitted changes exist, warn:
@@ -89,11 +89,11 @@ As a developer, I want to undo a bad merge from UNIFY, so that I can return to t
 
 <step name="execute_rollback">
 1. Create backup tag before destructive operation:
-   ```
+   ```bash
    git tag teddy/pre-rollback/{plan-id}
    ```
 2. Reset to safety tag:
-   ```
+   ```bash
    git reset --hard [selected-tag]
    ```
 3. Verify STATE.md shows loop position at APPLY complete

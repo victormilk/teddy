@@ -101,7 +101,7 @@ Acceptance criteria link for traceability.
 
 ## Wave Assignment Rules
 
-```
+```text
 Wave 1: depends_on: [] → parallel teammates
 Wave 2: depends on Wave 1 output → sequential after merge
 Wave 3: depends on Wave 2 output → sequential after merge
@@ -142,7 +142,7 @@ frontend-dev: src/components/, src/types/shared.ts  ← conflict!
 - File conflicts that can't be resolved by role boundaries
 
 **Prefer role-based vertical slices over horizontal layers:**
-```
+```text
 PREFER: Plan 01 = Auth System
           → backend-dev (6 tasks: models, APIs, middleware)
           → frontend-dev (5 tasks: login, register, auth context)

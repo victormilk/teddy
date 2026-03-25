@@ -7,7 +7,7 @@ Systematic debugging with persistent state that survives context resets. The deb
 </purpose>
 
 <user-story>
-As a developer, I want structured debugging that persists across sessions and can leverage parallel investigation agents, so that complex bugs get resolved systematically without losing progress.
+As a developer, I want structured debugging that persists across sessions and can leverage parallel investigation teammates, so that complex bugs get resolved systematically without losing progress.
 </user-story>
 
 <when-to-use>

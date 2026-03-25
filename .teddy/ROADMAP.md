@@ -6,11 +6,18 @@ Evolução do Teddy de um conjunto de skills individuais para um framework compl
 
 ## Current Milestone
 
-**v0.6 Skill Flows** (v0.6.0)
+**v0.7 Polish & Automation** (v0.7.0)
 Status: Complete
-Phases: 1 of 1 complete
+Phases: 2 of 2 complete
 
 ## Milestones
+
+### v0.7 Polish & Automation
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 08 | Bug Fixes + Test Gaps + Markdown Polish | 1 | Complete | 2026-03-25 |
+| 09 | Explore Redesign + CHANGELOG + v0.7.0 Release | 1 | Complete | 2026-03-25 |
 
 ### v0.6 Skill Flows
 
@@ -39,6 +46,26 @@ No phases tracked — published directly.
 | 04 | Session Resilience | 1 | Complete | 2026-03-25 |
 
 ## Phase Details
+
+### Phase 08: Bug Fixes + Test Gaps + Markdown Polish
+
+**Objetivo:** Corrigir bug no install.js (3 comandos ausentes no listing), adicionar teste de paridade install ↔ commands, e revisar todos os markdowns do projeto corrigindo formatação, typos e inconsistências.
+
+**Origem:** EXPLORATION-2026-03-25-polish-automation.md (findings #1, #2, #5)
+
+| Plan | Name | Status |
+|------|------|--------|
+| 08-01 | Install fix + test parity + markdown review | Complete |
+
+### Phase 09: Explore Redesign + CHANGELOG + v0.7.0 Release
+
+**Objetivo:** Melhorar explore skill (context loading, past explorations, parallel analysis), criar CHANGELOG.md com histórico completo, e bump para v0.7.0.
+
+**Origem:** EXPLORATION-2026-03-25-polish-automation.md (findings #5, #6) — Phases 09+10 merged por sizing.
+
+| Plan | Name | Status |
+|------|------|--------|
+| 09-01 | Explore redesign + CHANGELOG + v0.7.0 release | Complete |
 
 ### Phase 05: Housekeeping v0.5
 

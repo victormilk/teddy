@@ -15,6 +15,7 @@ Template for `.teddy/phases/{phase}/EXPLORATION.md` — structured output from t
 **Depth:** [Quick / Standard / Deep]
 **Confidence:** [HIGH / MEDIUM / LOW]
 **Decision it informs:** [What planning decision this feeds]
+**Prior explorations reviewed:** [List of EXPLORATION files checked, or "None — first exploration"]
 
 ## Question
 
@@ -88,6 +89,7 @@ Template for `.teddy/phases/{phase}/EXPLORATION.md` — structured output from t
 | `{option-name}` | variable | Yes | Option identifier | `jose`, `jsonwebtoken` |
 | `[Question]` | prose | Yes | What's being explored | `Which JWT library for Edge runtime?` |
 | `[Recommendation]` | prose | Yes | Chosen option with rationale | `jose — native Edge support, active maintenance` |
+| `[Prior explorations]` | prose | Yes | Which past explorations were reviewed | `EXPLORATION-2026-03-24-stabilization.md, EXPLORATION-2026-03-25-flows.md` |
 
 ## Section Specifications
 

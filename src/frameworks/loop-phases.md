@@ -6,7 +6,7 @@ Explain the semantics of Teddy's three loop phases: PLAN, APPLY, UNIFY. Every un
 
 ## The Loop
 
-```
+```text
     ┌─────────────────────────────────────────┐
     │                                         │
     ▼                                         │
@@ -55,7 +55,7 @@ Explain the semantics of Teddy's three loop phases: PLAN, APPLY, UNIFY. Every un
 
 **Teddy APPLY leverages Agent Teams for coordination:**
 
-```
+```text
 Sequential (old):          Agent Teams (Teddy):
 Task 1 ──► Task 2 ──► 3   TeamCreate
                            ├── TaskCreate × N

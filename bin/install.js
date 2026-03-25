@@ -114,13 +114,16 @@ function install(isGlobal, customConfigDir, dryRun) {
   console.log(`    /teddy:explore       Explore before planning`);
   console.log(`    /teddy:plan          Create execution plans`);
   console.log(`    /teddy:apply         Execute plans via agent teams`);
+  console.log(`    /teddy:amend-plan    Modify a plan mid-execution`);
   console.log(`    /teddy:unify         Reconcile results & merge`);
+  console.log(`    /teddy:rollback      Revert a completed unify`);
   console.log(`    /teddy:status        View team progress`);
   console.log(`    /teddy:resume        Resume a session`);
   console.log(`    /teddy:cleanup       Clean orphaned teams & worktrees`);
   console.log(`    /teddy:debug         Structured debugging`);
   console.log(`    /teddy:review        Code review`);
-  console.log(`    /teddy:map-codebase  Document codebase\n`);
+  console.log(`    /teddy:map-codebase  Document codebase`);
+  console.log(`    /teddy:flows         Manage skill flows\n`);
 
   if (dryRun) {
     console.log("\n  [DRY RUN] No files were written.\n");

@@ -5,15 +5,15 @@
 See: .teddy/PROJECT.md (updated 2026-03-25)
 
 **Core value:** Usuários podem planejar trabalho em fases e delegar para agentes em paralelo
-**Current focus:** v0.6 Skill Flows — In Progress
+**Current focus:** v0.7 Polish & Automation — Complete
 
 ## Current Position
 
-Milestone: v0.6 Skill Flows (v0.6.0)
-Phase: 1 of 1 — Skill Flows
-Plan: 07-01 — Skill Flows com Auto-Reconhecimento
+Milestone: v0.7 Polish & Automation (v0.7.0)
+Phase: 2 of 2 — Explore Redesign + CHANGELOG + v0.7.0 Release
+Plan: 09-01 — Explore redesign + CHANGELOG + v0.7.0 release
 Status: UNIFY complete
-Last activity: 2026-03-25 — Loop complete, all changes merged
+Last activity: 2026-03-25 — Milestone v0.7 complete, all changes merged
 
 Progress:
 - Milestone: [██████████] 100%
@@ -37,9 +37,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ### Last Execution
 | Teammate | Tasks | Wave | Result | Files Modified |
 |----------|-------|------|--------|----------------|
-| flows-dev | 6/6 | 1 | PASS | flows.md, skill-flows.md, FLOWS.md template |
-| integration-dev | 5/5 | 1 | PASS | plan.md, apply.md, unify.md, plan-format.md, loop-phases.md |
-| registry-dev | 5/5 | 1 | PASS | teddy.md, README.md, package.json, PROJECT.md, ROADMAP.md |
+| explore-dev | 6/6 | 1 | PASS | src/commands/explore.md, src/templates/EXPLORATION.md |
+| changelog-dev | 5/5 | 1 | PASS | CHANGELOG.md (new), README.md |
+| release-dev | 5/5 | 1 | PASS | package.json, .teddy/PROJECT.md |
 
 ## Accumulated Context
 
@@ -48,12 +48,14 @@ PLAN ──▶ APPLY ──▶ UNIFY
 | Decision | Phase | Impact |
 |----------|-------|--------|
 | Skip v0.4 milestone tracking — already published | 05 | ROADMAP lists v0.4 as "Published" without phases |
+| External validation completed with positive results | 07 | Removed from Planned in PROJECT.md |
+| Merged Phase 09 + 10 into single plan by sizing | 09 | One loop instead of two — closed v0.7 faster |
 
 ### Deferred Issues
 
 | Issue | Origin | Effort | Revisit |
 |-------|--------|--------|---------|
-| [None yet] | | | |
+| CI/CD pipeline | Exploration 2026-03-25 | M | v0.8 candidate |
 
 ### Blockers/Concerns
 
@@ -64,9 +66,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 ## Session Continuity
 
 Last session: 2026-03-25
-Stopped at: Plan 07-01 created, awaiting approval for APPLY
+Stopped at: Milestone v0.7 complete
 Next action: git commit + git push, or /teddy:explore for next milestone
-Resume file: .teddy/phases/07-skill-flows/07-01-SUMMARY.md
+Resume file: .teddy/phases/09-explore-changelog-release/09-01-SUMMARY.md
 
 ---
 *STATE.md — Updated after every significant action*

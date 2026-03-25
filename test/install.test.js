@@ -222,29 +222,21 @@ describe("countFiles", () => {
 // ── install command listing ──────────────────────────────────────────────
 
 describe("install command listing", () => {
-  it("install.js source lists all command files from src/commands/", () => {
+  it("install.js source lists all command files from src/commands/ (parity check)", () => {
     const installSrc = fs.readFileSync(
       path.join(__dirname, "..", "bin", "install.js"),
       "utf8"
     );
 
-    const expectedCommands = [
-      "teddy:init",
-      "teddy:explore",
-      "teddy:plan",
-      "teddy:apply",
-      "teddy:unify",
-      "teddy:status",
-      "teddy:resume",
-      "teddy:cleanup",
-      "teddy:debug",
-      "teddy:review",
-      "teddy:map-codebase",
-    ];
+    const commandsDir = path.join(__dirname, "..", "src", "commands");
+    const commandFiles = fs.readdirSync(commandsDir)
+      .filter((f) => f.endsWith(".md") && f !== "teddy.md")
+      .map((f) => `teddy:${f.replace(/\.md$/, "")}`);
 
-    for (const cmd of expectedCommands) {
-      expect(installSrc).toContain(cmd);
-    }
+    expect(commandFiles.length).toBeGreaterThan(0);
+
+    const missing = commandFiles.filter((cmd) => !installSrc.includes(cmd));
+    expect(missing).toEqual([]);
   });
 });
 

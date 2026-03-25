@@ -1,5 +1,5 @@
 ---
-description: "Orchestrate parallel Explore agents to analyze and document the entire codebase"
+description: "Orchestrate parallel Explore subagents to analyze and document the entire codebase"
 ---
 
 <purpose>
@@ -22,7 +22,7 @@ As a developer, I want my codebase automatically analyzed and documented, so tha
 </context>
 
 <references>
-@frameworks/teammate-orchestration.md (for parallel agent spawning)
+@frameworks/teammate-orchestration.md (for parallel subagent spawning)
 @templates/codebase/STACK.md (template for technology stack)
 @templates/codebase/ARCHITECTURE.md (template for architecture)
 @templates/codebase/STRUCTURE.md (template for directory structure)

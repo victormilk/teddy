@@ -8,7 +8,7 @@ Define how Teddy discovers, matches, and enforces skill dependencies across the 
 
 Skill flows operate through three layers that progressively narrow available skills to confirmed project dependencies:
 
-```
+```text
 Layer 1: DISCOVERY          Layer 2: MATCHING           Layer 3: CONFIRMATION
 ┌──────────────────┐       ┌──────────────────┐       ┌──────────────────┐
 │                  │       │                  │       │                  │
@@ -39,7 +39,7 @@ Layer 1: DISCOVERY          Layer 2: MATCHING           Layer 3: CONFIRMATION
 
 Skill flows are configured once and enforced throughout the loop:
 
-```
+```text
 /teddy:flows                    ← Configure skill dependencies
     │
     ▼

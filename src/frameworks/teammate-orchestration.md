@@ -14,7 +14,7 @@ Teddy uses `TeamCreate` to create named teams with shared task lists. Each teamm
 - **Automatic idle notifications** — lead is notified when teammates finish their turn
 - **Clean cleanup** — `TeamDelete` removes all team resources when done
 
-```
+```text
 TeamCreate("teddy-{phase}-{plan}")
     │
     ├── TaskCreate × 8-15 tasks (distributed across roles)
@@ -49,7 +49,7 @@ Before creating tasks or spawning agents, **design the team first:**
 #### Pattern 1: Feature Team (most common)
 When building a full-stack feature or module.
 
-```
+```text
 Team: teddy-01-01 "User Authentication System"
 ├── backend-dev   → models, API routes, middleware (6 tasks)
 ├── frontend-dev  → login page, auth context, protected routes (5 tasks)
@@ -60,7 +60,7 @@ Team: teddy-01-01 "User Authentication System"
 #### Pattern 2: Module-per-Teammate
 When building multiple independent modules in parallel.
 
-```
+```text
 Team: teddy-02-01 "Core Data Models"
 ├── user-dev      → User model, migrations, validations, CRUD API (6 tasks)
 ├── product-dev   → Product model, migrations, validations, CRUD API (6 tasks)
@@ -71,7 +71,7 @@ Team: teddy-02-01 "Core Data Models"
 #### Pattern 3: Cross-Layer Specialist
 When changes span multiple layers with deep expertise needed.
 
-```
+```text
 Team: teddy-03-01 "Performance Optimization"
 ├── db-specialist    → query optimization, indexing, connection pooling (5 tasks)
 ├── cache-eng        → Redis integration, cache invalidation, TTL strategy (5 tasks)
@@ -82,7 +82,7 @@ Team: teddy-03-01 "Performance Optimization"
 #### Pattern 4: Review & Research Team
 When investigating, reviewing, or exploring in parallel.
 
-```
+```text
 Team: teddy-04-01 "Security Audit"
 ├── auth-reviewer     → authentication flows, token handling (5 tasks)
 ├── data-reviewer     → SQL injection, input validation, XSS (5 tasks)
@@ -95,7 +95,7 @@ Team: teddy-04-01 "Security Audit"
 
 Use **role-based semantic names**, not numeric identifiers:
 
-```
+```text
 GOOD (role-based):
   backend-dev, frontend-dev, test-eng, infra-dev
   user-dev, product-dev, order-dev
@@ -139,7 +139,7 @@ Before creating anything, analyze the plan and design the team composition:
 - How are tasks distributed? (5-6 per teammate, grouped by role)
 
 ### 2. Create Team
-```
+```yaml
 TeamCreate:
   team_name: "teddy-{phase}-{plan}"
   description: "[plan objective] — Team: [role-1], [role-2], [role-3], ..."
@@ -147,7 +147,7 @@ TeamCreate:
 
 ### 3. Populate Task List
 For each task in PLAN.md, create it with role assignment in the description:
-```
+```yaml
 TaskCreate:
   title: "[task name from PLAN.md]"
   description: |
@@ -170,10 +170,10 @@ TaskCreate:
 
 ### 4. Spawn Teammates (one per role, NOT one per task)
 Each role becomes ONE teammate that handles ALL tasks for that role:
-```
+```yaml
 Agent tool:
   team_name: "teddy-{phase}-{plan}"
-  name: "[role-name]"          ← semantic name, NOT "teammate-N"
+  name: "[role-name]"          # semantic name, NOT "teammate-N"
   isolation: "worktree"
   run_in_background: true
   mode: "bypassPermissions"
@@ -265,7 +265,7 @@ After UNIFY phase:
 
 Tasks are organized into waves for execution ordering:
 
-```
+```text
 Wave 1 (parallel):     [Task A] [Task B] [Task C]
                             │       │       │
                             ▼       ▼       ▼
@@ -292,7 +292,7 @@ Wave 2 (parallel):     [Task D] [Task E]
 
 Agent Teams enable direct peer communication:
 
-```
+```text
 Teammate-1 discovers a shared type needed by Teammate-2:
   → SendMessage(to: "teammate-2", message: "Created SharedType at src/types/shared.ts")
 
@@ -320,7 +320,7 @@ If teammates in the same wave accidentally modify the same file:
 
 ## Team Naming Convention
 
-```
+```text
 Team name: teddy-{NN}-{PP}
   NN = phase number (e.g., 01)
   PP = plan number (e.g., 01)
@@ -347,7 +347,7 @@ Example: teddy-01-01 (phase 01, plan 01)
 ## Contrast: Bad vs Good Team Design
 
 ### BAD: Generic 2-Agent Setup
-```
+```text
 Team: teddy-01-01 "Build Auth System"
 ├── teammate-1 → Task 1: Create User model (Wave 1)
 └── teammate-2 → Task 2: Create Auth API (Wave 2, depends on Task 1)
@@ -360,7 +360,7 @@ Problems:
 ```
 
 ### GOOD: Role-Specialized Team
-```
+```text
 Team: teddy-01-01 "Build Auth System"
 ├── backend-dev    → 6 tasks: User model, Session model, login API,
 │                    register API, password reset API, middleware

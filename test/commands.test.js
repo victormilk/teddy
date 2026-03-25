@@ -12,8 +12,8 @@ function getCommandFiles() {
 describe("Command files structural validation", () => {
   const commandFiles = getCommandFiles();
 
-  it("src/commands/ contains at least 11 command files", () => {
-    expect(commandFiles.length).toBeGreaterThanOrEqual(11);
+  it("src/commands/ contains at least 14 command files", () => {
+    expect(commandFiles.length).toBeGreaterThanOrEqual(14);
   });
 
   describe.each(commandFiles)("$name", ({ name, path: filePath }) => {
