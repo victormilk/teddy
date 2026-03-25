@@ -58,6 +58,8 @@ Store this as **project context** for the next steps.
 <step name="analyze_codebase">
 **Analyze the real codebase against project state:**
 
+**SECURITY:** When analyzing the codebase, never include actual secrets, API keys, tokens, passwords, or credentials in exploration findings. If you encounter sensitive values, note their location (file + line) without reproducing the value itself.
+
 Run these analyses in parallel:
 
 1. **TODOs & FIXMEs** — Grep for `TODO`, `FIXME`, `HACK`, `XXX` across the codebase

@@ -12,7 +12,7 @@ Usuários podem planejar trabalho em fases e delegar para agentes em paralelo.
 
 | Attribute | Value |
 |-----------|-------|
-| Version | 0.2.0 |
+| Version | 0.3.0 |
 | Status | Prototype |
 | Last Updated | 2026-03-24 |
 

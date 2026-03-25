@@ -5,10 +5,11 @@
 ## Tech Debt
 
 **Conflicting Task Sizing Guidance:**
+**Status: RESOLVED (2026-03-24)**
 - Issue: `src/checklists/plan-review.md` states "2-3 tasks maximum" but `src/frameworks/teammate-orchestration.md` suggests "5-6 tasks per role" and team sizing guide suggests 15-30 total tasks per plan
 - Files: `src/checklists/plan-review.md` (line 27), `src/frameworks/quality-principles.md` (line 63), `src/frameworks/teammate-orchestration.md`
 - Impact: Plans validated against the checklist will fail if they follow team composition guidelines
-- Fix approach: Consolidate to single standard — either small plans (2-3 tasks total) or 5-6 per role. Update checklist to match
+- Resolution: Consolidated to execution spectrum model (direct/subagents/teams) across quality-principles.md, plan-review.md, and teddy.md — Phase 02
 
 **Incomplete Explore Command Specification:**
 - Issue: Acceptance criteria states "Real codebase analyzed" but implementation steps don't explicitly assign which sub-step validates "roadmap vs reality" detection
@@ -23,18 +24,20 @@
 - Fix approach: Add pre-flight check in `apply.md` that warns if stale teams exist. Consider `/teddy:cleanup` command
 
 **Brittle Path Prefix Logic in Installer:**
+**Status: PARTIALLY ADDRESSED (2026-03-24)**
 - Issue: Internal references rewritten via regex (`content.replace(/~\/\.claude\//g, pathPrefix)`). If reference format changes, regex silently fails
 - Files: `bin/install.js` (lines 74-77, 105-109)
 - Impact: Global installations may have stale path references after format changes
-- Fix approach: Add post-install validation to verify all `@` references resolve correctly
+- Resolution: Post-install validateReferences() added to warn about unresolvable @references. Regex rewriting still uses simple replace — full fix deferred.
 
 ## Known Bugs
 
 **Plan-Review Checklist Contradictions:**
+**Status: RESOLVED (2026-03-24)**
 - Symptoms: Plans following team composition guidelines fail checklist validation
 - Trigger: Create plan with 5+ tasks per role, then run plan-review checklist
 - Files: `src/checklists/plan-review.md`, `src/frameworks/teammate-orchestration.md`
-- Root cause: Checklist and framework docs written at different times with different assumptions
+- Resolution: plan-review.md scope section updated to match execution spectrum model — Phase 02
 
 **Explore Command Routing Inconsistency:**
 - Symptoms: Explore says "Do NOT invoke /teddy:plan automatically" but other commands auto-route
@@ -45,16 +48,18 @@
 ## Security Considerations
 
 **Secrets in Debug/Exploration Output:**
+**Status: RESOLVED (2026-03-24)**
 - Risk: Teammates analyzing codebase could surface API keys, DB passwords, or credentials in analysis output
 - Files: `src/commands/debug.md`, `src/commands/explore.md`
 - Current mitigation: `src/commands/map-codebase.md` warns about secrets, but debug and explore don't
-- Recommendations: Add security callout to explore.md and debug.md: "Never include actual secrets in findings"
+- Resolution: Security callouts added to explore.md and debug.md — Phase 03
 
 **No Input Validation in Interactive Installer:**
+**Status: RESOLVED (2026-03-24)**
 - Risk: Custom config-dir path used directly in `fs.mkdirSync()` without sanitization
 - Files: `bin/install.js` (lines 155-177)
 - Current mitigation: None
-- Recommendations: Validate config-dir path — must be within home directory or project root, no parent traversal (`..`)
+- Resolution: validateConfigDir() added with path traversal rejection and home/cwd boundary check — Phase 03
 
 ## Fragile Areas
 

@@ -90,6 +90,8 @@ Gather symptoms — update file after EACH answer:
 <step name="investigation_loop">
 Autonomous investigation — update debug file continuously.
 
+**SECURITY:** When investigating bugs, never include actual secrets, API keys, tokens, passwords, or credentials in debug output or analysis. If you encounter sensitive values, note their location (file + line) without reproducing the value.
+
 **For complex bugs, spawn investigation teammates:**
 
 If multiple hypotheses can be tested independently:

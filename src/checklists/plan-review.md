@@ -24,10 +24,13 @@ Validates a PLAN.md before approving for teammate execution.
 - [ ] Wave dependencies are genuine (not reflexive chaining)
 
 ## Scope
-- [ ] Plan has 2-3 tasks maximum
+- [ ] Plan sizing matches execution mode:
+      - Agent Teams: 3-5 roles, 5-6 tasks per role (15-30 total)
+      - Subagents: 1-3 agents, 1-3 tasks each (3-9 total)
+      - Direct execution: 1-2 tasks, single domain
 - [ ] Estimated context per teammate is under 50%
 - [ ] Vertical slices preferred over horizontal layers
-- [ ] No task exceeds 60 minutes estimated effort
+- [ ] No single task exceeds 60 minutes estimated effort
 
 ## Scoring
 

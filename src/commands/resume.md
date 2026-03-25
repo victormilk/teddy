@@ -50,6 +50,37 @@ As a developer, I want to instantly resume work from where I left off, so that s
    - Teammate status via TaskList (if team active)
 </step>
 
+<step name="validate_state_integrity">
+After loading STATE.md, cross-validate its claims against the filesystem:
+
+1. **Active team check:** If STATE.md lists an active team:
+   - Check if `~/.claude/teams/{team-name}/` exists
+   - Check if `~/.claude/tasks/{team-name}/` exists
+   - If team doesn't exist but STATE.md says it's active → inconsistency
+
+2. **Loop position check:** If STATE.md shows APPLY ✓ but UNIFY ○:
+   - Verify the referenced team still exists
+   - If team is gone → session likely crashed after APPLY, before UNIFY
+   - Suggest: "Session appears to have been interrupted after APPLY. Run /teddy:cleanup to reset state."
+
+3. **Phase file check:** If STATE.md references a plan:
+   - Verify the PLAN.md file exists at the expected path
+   - If missing → warn about orphaned state
+
+4. **Report inconsistencies:**
+   If any issues found, display BEFORE the resume report:
+   ```
+   ⚠ STATE INTEGRITY ISSUES
+   - [issue description]
+   - [issue description]
+
+   Recommended: Run /teddy:cleanup to resolve.
+   ```
+   Then continue with resume (don't block, just warn).
+
+5. If no issues: proceed silently (no extra output).
+</step>
+
 <step name="determine_single_action">
 Based on loop position, determine **exactly ONE** next action:
 
@@ -60,6 +91,13 @@ Based on loop position, determine **exactly ONE** next action:
 | PLAN ✓, APPLY ✓, UNIFY ○ (executed, team active) | `/teddy:unify [plan-path]` |
 | All ✓ (loop complete) | `/teddy:plan` (next phase) |
 | Blocked | "Address blocker: [specific issue]" |
+| Interrupted (STATE.md inconsistent) | `/teddy:cleanup` then resume |
+
+**Interrupted session detection:**
+If the validate_state_integrity step found issues:
+- Override the normal next action
+- Set next action to `/teddy:cleanup`
+- After cleanup completes, re-evaluate the loop position
 
 **Do NOT offer multiple options.** Pick the ONE correct action.
 </step>

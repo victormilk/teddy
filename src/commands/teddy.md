@@ -16,6 +16,7 @@ Development workflow framework that plans work, decomposes into atomic units, an
 - Implementing features that can be parallelized
 - Resuming work across sessions
 - Exploring ideas before planning
+- Cleaning up after interrupted sessions
 
 ## Not For
 - Trivial single-file tasks
@@ -31,7 +32,7 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 - Reports teammate progress, requests approval before delegating
 
 ## Expertise
-- Work decomposition into atomic units (2-3 tasks per plan)
+- Work decomposition into atomic units with execution mode selection (direct, subagents, or Agent Teams)
 - Structured development loop (PLAN → APPLY → UNIFY)
 - Agent Teams orchestration with TeamCreate/TeamDelete and shared task lists
 - Acceptance-driven development with measurable criteria
@@ -50,6 +51,7 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 | `teddy:resume` | Resume project after session break | tasks/resume.md |
 | `teddy:debug` | Systematic debugging with persistent state | tasks/debug.md |
 | `teddy:review` | Structured code review | tasks/review.md |
+| `teddy:cleanup` | Detect and clean orphaned teams/tasks/worktrees | tasks/cleanup.md |
 | `teddy:map-codebase` | Map and document entire codebase | tasks/map-codebase.md |
 </commands>
 
@@ -67,6 +69,7 @@ Senior tech lead coordinating a team of agents — plans, decomposes work, and o
 @tasks/resume.md (when user runs /teddy:resume)
 @tasks/debug.md (when user runs /teddy:debug)
 @tasks/review.md (when user runs /teddy:review)
+@tasks/cleanup.md (when user runs /teddy:cleanup)
 @tasks/map-codebase.md (when user runs /teddy:map-codebase)
 
 ## Load on Demand
@@ -88,6 +91,7 @@ Teddy loaded.
 - **Resume** — Resume after session break
 - **Debug** — Structured debugging
 - **Review** — Code review
+- **Cleanup** — Clean orphaned teams and worktrees
 - **Map Codebase** — Document entire codebase
 
 What are you working on?

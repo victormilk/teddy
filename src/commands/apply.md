@@ -30,7 +30,31 @@ As a developer, I want my approved plan automatically distributed to a coordinat
 
 <steps>
 
-<step name="validate_approval" priority="first">
+<step name="preflight_check" priority="first">
+1. Check for existing teddy teams in `~/.claude/teams/`:
+   ```bash
+   ls ~/.claude/teams/ 2>/dev/null | grep "^teddy-"
+   ```
+2. If stale teams found:
+   - Compare with STATE.md active team field
+   - If STATE.md doesn't reference them → they are orphaned
+   - Warn the user:
+     ```
+     ⚠ STALE TEAMS DETECTED
+     Found [N] orphaned team(s) from a previous session:
+     - teddy-XX-YY (age: Xh)
+
+     These may interfere with new team creation.
+
+     [1] Run /teddy:cleanup first (recommended)
+     [2] Continue anyway (may cause conflicts)
+     ```
+   - If user chooses [1]: route to /teddy:cleanup, then return here
+   - If user chooses [2]: proceed with warning logged
+3. If no stale teams: proceed silently (no output)
+</step>
+
+<step name="validate_approval">
 1. Confirm user has explicitly approved the plan
    - Do NOT assume approval
    - Look for explicit signal: "approved", "execute", "go ahead"

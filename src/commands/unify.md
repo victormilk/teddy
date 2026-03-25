@@ -114,17 +114,39 @@ Include teammate-specific sections:
 </step>
 
 <step name="cleanup_team">
-**Gracefully shut down the Agent Team:**
+**Gracefully shut down the Agent Team (resilient to partial failures):**
 
-1. Send shutdown request to each teammate:
-   ```
-   SendMessage(to: "teammate-N", message: {type: "shutdown_request"})
-   ```
-2. Wait for all teammates to shut down
-3. Call `TeamDelete` to remove team and task resources:
-   - Removes `~/.claude/teams/{team-name}/`
-   - Removes `~/.claude/tasks/{team-name}/`
-4. Confirm cleanup in STATE.md (clear active team)
+1. **Shutdown teammates (tolerant of missing teammates):**
+   For each teammate:
+   - Try SendMessage(to: "[name]", message: {type: "shutdown_request"})
+   - If teammate is already gone (error/no response): log "teammate [name] already shut down" and continue
+   - Do NOT fail the entire cleanup if one teammate is unreachable
+
+2. **TeamDelete (tolerant of missing team):**
+   - Try TeamDelete(team_name)
+   - If team doesn't exist (already cleaned): log "team [name] already cleaned" and continue
+   - If TeamDelete fails for another reason: log warning and continue with manual cleanup suggestion:
+     ```
+     ⚠ TeamDelete failed for [team-name]: [error]
+     Manual cleanup: rm -rf ~/.claude/teams/[team-name] ~/.claude/tasks/[team-name]
+     ```
+
+3. **Worktree cleanup:**
+   - Run `git worktree list` to find any remaining teddy worktrees
+   - For each stale teddy worktree found:
+     - Try `git worktree remove <path>`
+     - If removal fails (locked): log warning with manual removal command:
+       ```
+       ⚠ Could not remove worktree: [path]
+       Manual cleanup: git worktree remove --force [path]
+       ```
+
+4. **STATE.md update:**
+   - Clear active team from Teammates section
+   - If any cleanup failed partially, add note to Blockers section:
+     ```
+     Partial cleanup — manual intervention may be needed. See warnings above.
+     ```
 </step>
 
 <step name="update_state">

@@ -59,18 +59,24 @@ Plans must complete within reasonable context usage per teammate.
 - 50-70% context: Degrading
 - 70%+ context: Poor
 
-**Solution:** Aggressive atomicity — small plans, focused teammates.
-- 2-3 tasks per plan maximum
-- Each teammate gets 1 self-contained task
-- Target ~50% context per teammate
+**Solution:** Match execution mode to scope. Target under 50% context per teammate.
+
+| Execution Mode | When | Roles | Tasks/Role | Total Tasks |
+|---------------|------|-------|-----------|-------------|
+| Direct execution | Single domain, tight coupling | 0 | — | 1-2 |
+| Subagents | Focused tasks, no inter-agent coordination | 1-3 | 1-3 | 3-9 |
+| Agent Teams | Multi-domain, parallel value, clear role ownership | 3-5 | 5-6 | 15-30 |
+
+**When borderline, prefer direct execution or subagents. Teams have real overhead — use them when the parallelism payoff is clear.**
 
 ## Teammate Sizing Sweet Spot
 
-| Task Complexity | Teammate Duration | Tasks/Plan | Teammates/Wave |
-|-----------------|-------------------|------------|----------------|
-| Simple (config, single file) | 5-15 min | 3 | 2-3 |
-| Medium (feature, few files) | 15-30 min | 2 | 2 |
-| Complex (architecture, many files) | 30-60 min | 1-2 | 1-2 |
+| Work Scope | Teammates | Tasks per Teammate | Total Tasks |
+|-----------|-----------|-------------------|-------------|
+| Small feature | 3 | 4-5 | 12-15 |
+| Medium feature | 3-4 | 5-6 | 15-24 |
+| Large feature | 4-5 | 5-6 | 20-30 |
+| Research/Review | 3-5 | 3-5 | 9-25 |
 
 **Too simple for a teammate:** Under 5 minutes of work. Execute directly.
 **Too complex for a teammate:** Over 60 minutes. Split into smaller tasks.

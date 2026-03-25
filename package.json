@@ -27,5 +27,11 @@
   "homepage": "https://github.com/victormilk/teddy",
   "engines": {
     "node": ">=16.7.0"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.0"
   }
 }

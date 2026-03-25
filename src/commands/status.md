@@ -32,6 +32,26 @@ As a developer, I want to see at a glance what the team is doing and overall pro
    - Use `TaskList` to get task statuses from shared task list
 </step>
 
+<step name="health_check">
+Run quick health checks before displaying status:
+
+1. **Orphaned teams:** Check `~/.claude/teams/` for teddy-* directories not referenced in STATE.md
+2. **Stale worktrees:** Run `git worktree list` and check for teddy-pattern worktrees with no matching active team
+3. **STATE.md consistency:** If STATE.md claims active team but team dir is missing → flag
+
+If any issues found, add a health section to the status display:
+```
+⚠ HEALTH WARNINGS
+- [N] orphaned team(s) detected
+- [N] stale worktree(s) found
+- STATE.md references missing team
+
+Run /teddy:cleanup to resolve.
+```
+
+If no issues: don't show the health section (clean output).
+</step>
+
 <step name="display_status">
 Display comprehensive status:
 
