@@ -19,6 +19,13 @@ As a developer, I want my codebase automatically analyzed and documented, so tha
 
 <references>
 @frameworks/teammate-orchestration.md (for parallel agent spawning)
+@templates/codebase/STACK.md (template for technology stack)
+@templates/codebase/ARCHITECTURE.md (template for architecture)
+@templates/codebase/STRUCTURE.md (template for directory structure)
+@templates/codebase/CONVENTIONS.md (template for coding conventions)
+@templates/codebase/TESTING.md (template for testing patterns)
+@templates/codebase/INTEGRATIONS.md (template for external integrations)
+@templates/codebase/CONCERNS.md (template for tech debt and issues)
 </references>
 
 <steps>
@@ -59,7 +66,20 @@ Agent tool:
   subagent_type: "Explore"
   run_in_background: true
   description: "Analyze tech stack and integrations"
-  prompt: "Analyze this codebase for technology stack and external integrations. Include actual file paths in findings. Focus: languages, runtime, frameworks, dependencies, external services, configuration. Output structured findings."
+  prompt: |
+    Analyze this codebase for technology stack and external integrations.
+    Include actual file paths in findings.
+
+    For STACK, document: languages, runtime, package manager, frameworks,
+    key dependencies (limit 5-10), configuration, platform requirements.
+    Follow the template structure from @templates/codebase/STACK.md.
+
+    For INTEGRATIONS, document: external APIs/services, data storage,
+    auth providers, monitoring, CI/CD, environment config, webhooks.
+    Follow the template structure from @templates/codebase/INTEGRATIONS.md.
+
+    IMPORTANT: Document WHERE secrets live (env var names), never actual values.
+    Output structured findings organized by these two documents.
 ```
 
 **Teammate 2: Architecture + Structure (Organization Focus)**
@@ -68,7 +88,20 @@ Agent tool:
   subagent_type: "Explore"
   run_in_background: true
   description: "Analyze architecture and directory structure"
-  prompt: "Analyze this codebase architecture and directory structure. Include actual file paths. Focus: architectural pattern, layers, data flow, key abstractions, entry points, directory organization. Output structured findings."
+  prompt: |
+    Analyze this codebase architecture and directory structure.
+    Include actual file paths.
+
+    For ARCHITECTURE, document: overall pattern, layers and responsibilities,
+    data flow/request lifecycle, key abstractions, entry points, error handling
+    strategy, cross-cutting concerns.
+    Follow the template structure from @templates/codebase/ARCHITECTURE.md.
+
+    For STRUCTURE, document: directory layout (ASCII tree), directory purposes,
+    key file locations, naming conventions, where to add new code, special directories.
+    Follow the template structure from @templates/codebase/STRUCTURE.md.
+
+    Output structured findings organized by these two documents.
 ```
 
 **Teammate 3: Conventions + Testing (Quality Focus)**
@@ -77,7 +110,21 @@ Agent tool:
   subagent_type: "Explore"
   run_in_background: true
   description: "Analyze coding conventions and test patterns"
-  prompt: "Analyze this codebase for coding conventions and testing practices. Include actual file paths. Focus: code style, naming, test framework, test organization, coverage approach, linting. Output structured findings."
+  prompt: |
+    Analyze this codebase for coding conventions and testing practices.
+    Include actual file paths.
+
+    For CONVENTIONS, document: naming patterns (files, functions, variables, types),
+    code style/formatting, import organization, error handling patterns, logging,
+    comment conventions, function and module design.
+    Follow the template structure from @templates/codebase/CONVENTIONS.md.
+
+    For TESTING, document: test framework/runner, file organization, test structure,
+    mocking patterns, fixtures/factories, coverage, test types, common patterns.
+    Follow the template structure from @templates/codebase/TESTING.md.
+
+    Be prescriptive: "Use X" not "Sometimes Y is used".
+    Output structured findings organized by these two documents.
 ```
 
 **Teammate 4: Concerns (Issues Focus)**
@@ -86,7 +133,19 @@ Agent tool:
   subagent_type: "Explore"
   run_in_background: true
   description: "Identify technical debt and concerns"
-  prompt: "Analyze this codebase for technical debt, known issues, and concerns. Include actual file paths for every concern. Focus: TODOs, complexity, missing error handling, security patterns, outdated deps, missing tests. Output structured findings."
+  prompt: |
+    Analyze this codebase for technical debt, known issues, and concerns.
+    Include actual file paths for EVERY concern.
+
+    Document: tech debt, known bugs, security considerations, performance
+    bottlenecks (with measurements), fragile areas, scaling limits,
+    dependencies at risk, missing critical features, test coverage gaps.
+    Follow the template structure from @templates/codebase/CONCERNS.md.
+
+    IMPORTANT: Be specific with measurements ("500ms p95" not "slow").
+    Include fix approaches, not just problems.
+    Always include file paths — concerns without locations are not actionable.
+    Output structured findings.
 ```
 </step>
 
@@ -94,15 +153,16 @@ Agent tool:
 After all 4 teammates complete:
 
 1. Collect results from each
-2. Write 7 documents to `.teddy/codebase/`:
-   - STACK.md (from Teammate 1)
-   - INTEGRATIONS.md (from Teammate 1)
-   - ARCHITECTURE.md (from Teammate 2)
-   - STRUCTURE.md (from Teammate 2)
-   - CONVENTIONS.md (from Teammate 3)
-   - TESTING.md (from Teammate 3)
-   - CONCERNS.md (from Teammate 4)
-3. Verify all documents created and non-empty
+2. Write 7 documents to `.teddy/codebase/`, following the **File Template** section from each template:
+   - STACK.md (from Teammate 1) — use @templates/codebase/STACK.md format
+   - INTEGRATIONS.md (from Teammate 1) — use @templates/codebase/INTEGRATIONS.md format
+   - ARCHITECTURE.md (from Teammate 2) — use @templates/codebase/ARCHITECTURE.md format
+   - STRUCTURE.md (from Teammate 2) — use @templates/codebase/STRUCTURE.md format
+   - CONVENTIONS.md (from Teammate 3) — use @templates/codebase/CONVENTIONS.md format
+   - TESTING.md (from Teammate 3) — use @templates/codebase/TESTING.md format
+   - CONCERNS.md (from Teammate 4) — use @templates/codebase/CONCERNS.md format
+3. Fill each template's `[placeholders]` with actual findings — remove unused sections
+4. Verify all documents created and non-empty
 </step>
 
 <step name="report">
