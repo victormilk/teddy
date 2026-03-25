@@ -1,0 +1,31 @@
+{
+  "name": "teddy-framework",
+  "version": "0.1.0",
+  "description": "Development workflow framework that plans work, decomposes into atomic units, and orchestrates named Agent Teams with shared task lists for coordinated parallel execution.",
+  "bin": {
+    "teddy-framework": "bin/install.js"
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ],
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai",
+    "agent",
+    "workflow",
+    "orchestration",
+    "slash-commands"
+  ],
+  "author": "victormilk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victormilk/teddy.git"
+  },
+  "homepage": "https://github.com/victormilk/teddy",
+  "engines": {
+    "node": ">=16.7.0"
+  }
+}

@@ -1,0 +1,14 @@
+node_modules/
+
+# Installed command files (copies of src/commands/ created by install script)
+/apply.md
+/debug.md
+/explore.md
+/init.md
+/map-codebase.md
+/plan.md
+/resume.md
+/review.md
+/status.md
+/teddy.md
+/unify.md
