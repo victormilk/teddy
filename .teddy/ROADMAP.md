@@ -6,11 +6,24 @@ Evolução do Teddy de um conjunto de skills individuais para um framework compl
 
 ## Current Milestone
 
-**v0.3 Workflow Orchestration** (v0.3.0)
-Status: Complete
-Phases: 4 of 4 complete
+**v0.5 Housekeeping + Plan Resilience** (v0.5.0)
+Status: In Progress
+Phases: 1 of 2 complete
 
-## Phases
+## Milestones
+
+### v0.5 Housekeeping + Plan Resilience
+
+| Phase | Name | Plans | Status | Completed |
+|-------|------|-------|--------|-----------|
+| 05 | Housekeeping v0.5 | 1 | Complete | 2026-03-25 |
+| 06 | Plan Resilience | TBD | Planned | — |
+
+### v0.4 (Published)
+
+No phases tracked — published directly.
+
+### v0.3 Workflow Orchestration (Complete)
 
 | Phase | Name | Plans | Status | Completed |
 |-------|------|-------|--------|-----------|
@@ -20,6 +33,28 @@ Phases: 4 of 4 complete
 | 04 | Session Resilience | 1 | Complete | 2026-03-25 |
 
 ## Phase Details
+
+### Phase 05: Housekeeping v0.5
+
+**Objetivo:** Bump para v0.5.0, sincronizar state files, completar README, atualizar vitest para 4.x.
+
+**Origem:** EXPLORATION-2026-03-25-housekeeping-resilience.md (findings #1, #2, #3, #5)
+
+| Plan | Name | Status |
+|------|------|--------|
+| 05-01 | Version bump v0.5.0 + README + vitest upgrade | Complete |
+
+### Phase 06: Plan Resilience
+
+**Objetivo:** Adicionar /teddy:amend-plan para modificar planos mid-execution e /teddy:rollback para reverter merges pós-UNIFY com safety tags.
+
+**Origem:** EXPLORATION-2026-03-25-housekeeping-resilience.md (findings #7, #8)
+
+| Plan | Name | Status |
+|------|------|--------|
+| 06-01 | amend-plan + rollback commands | Planned |
+
+---
 
 ### Phase 01: Skill Metadata & Command References
 
@@ -61,4 +96,4 @@ Phases: 4 of 4 complete
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-03-24*
+*Last updated: 2026-03-25*

@@ -12,9 +12,9 @@ Usuários podem planejar trabalho em fases e delegar para agentes em paralelo.
 
 | Attribute | Value |
 |-----------|-------|
-| Version | 0.3.0 |
+| Version | 0.5.0 |
 | Status | Prototype |
-| Last Updated | 2026-03-24 |
+| Last Updated | 2026-03-25 |
 
 ## Requirements
 
@@ -23,16 +23,20 @@ Usuários podem planejar trabalho em fases e delegar para agentes em paralelo.
 - [x] Skill-based architecture with slash commands — v0.1.0
 - [x] npx installer — v0.1.0
 - [x] Codebase mapping templates — v0.2.0
+- [x] Structured planning and phase decomposition — v0.3.0
+- [x] Agent team orchestration with shared task lists — v0.3.0
+- [x] Session resumption and state continuity — v0.3.0
+- [x] Debug and review workflows — v0.3.0
 
 ### Active (In Progress)
 
-- [ ] Structured planning and phase decomposition
-- [ ] Agent team orchestration with shared task lists
+- [ ] Plan amendment mid-execution
+- [ ] Rollback pós-UNIFY with safety tags
 
 ### Planned (Next)
 
-- [ ] Session resumption and state continuity
-- [ ] Debug and review workflows
+- [ ] CI/CD and release automation
+- [ ] External project validation
 
 ### Out of Scope
 
@@ -71,4 +75,4 @@ Usuários podem planejar trabalho em fases e delegar para agentes em paralelo.
 
 ---
 *PROJECT.md — Updated when requirements or context change*
-*Last updated: 2026-03-24*
+*Last updated: 2026-03-25*

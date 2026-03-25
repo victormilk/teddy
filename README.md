@@ -46,6 +46,7 @@ Type `/teddy` in Claude Code to get started, then use any command:
 | `/teddy:resume` | Resume work across sessions |
 | `/teddy:debug` | Structured debugging workflow |
 | `/teddy:review` | Code review |
+| `/teddy:cleanup` | Clean orphaned teams, tasks, and worktrees |
 | `/teddy:map-codebase` | Analyze and document existing codebase |
 
 ## Project Structure
